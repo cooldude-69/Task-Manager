@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - TaskMe</title>
+    <link rel="stylesheet" href="dashboard.component.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="logo">
+                <p class="bg-blue-600 p-2 rounded-full">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="text-white text-2xl font-black" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="none" d="M0 0h24v24H0z"></path>
+                        <path d="M22 5.18L10.59 16.6l-4.24-4.24 1.41-1.41 2.83 2.83 10-10L22 5.18zM12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8c1.57 0 3.04.46 4.28 1.25l1.45-1.45A10.02 10.02 0 0012 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.73 0 3.36-.44 4.78-1.22l-1.5-1.5c-1 .46-2.11.72-3.28.72zm7-5h-3v2h3v3h2v-3h3v-2h-3v-3h-2v3z"></path>
+                    </svg>
+                </p>
+                <h2>TaskTracker</h2>
+            </div>
+            <ul class="nav-links">
+                <li class="active"><a href="#">Dashboard</a></li>
+                <li><a routerLink="/tasks" >Tasks</a></li>
+                <li><a href="#">Completed</a></li>
+                <li><a href="#">In Progress</a></li>
+                <li><a href="#">To Do</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+            <div class="profile" (click)="toggleDropdown()">
+                <div class="notification">
+                    <span>🔔</span>
+                </div>
+                <div class="profile-pic">
+                    <span>RP</span>
+                </div>
+                <div class="dropdown" [class.active]="dropdownVisible" >
+                    <ul>
+                        <li><a href="#" (click)="onProfileClick($event)">Profile</a></li>
+                        <li><a href="#" (click)="onChangePasswordClick($event)">Change Password</a></li>
+                        <li><a href="#" (click)="onLogoutClick($event)">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+        </nav>
+        <main>
+            <section class="cards">
+                <div class="card">
+                    <h3>TOTAL TASK</h3>
+                    <p>4</p>
+                    <span>111 last month</span>
+                </div>
+                <div class="card">
+                    <h3>COMPLETED TASK</h3>
+                    <p>1</p>
+                    <span>111 last month</span>
+                </div>
+                <div class="card">
+                    <h3>TASK IN PROGRESS</h3>
+                    <p>1</p>
+                    <span>111 last month</span>
+                </div>
+                <div class="card">
+                    <h3>TODOS</h3>
+                    <p>2</p>
+                    <span>111 last month</span>
+                </div>
+            </section>
+            <section class="chart">
+                <h3>Chart by Priority</h3>
+                <canvas id="priorityChart"></canvas>
+            </section>
+            <section class="task-table">
+                <h3>Task List</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Task Title</th>
+                            <th>Priority</th>
+                            <th>Team</th>
+                            <th>Created At</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Check the websites</td>
+                            <td>High</td>
+                            <td><span class="team-member">RP</span></td>
+                            <td>a month ago</td>
+                        </tr>
+                        <tr>
+                            <td>Test Low Task</td>
+                            <td>Low</td>
+                            <td><span class="team-member">CA</span> <span class="team-member">IS</span> <span class="team-member">RP</span></td>
+                            <td>3 months ago</td>
+                        </tr>
+                        <tr>
+                            <td>Test task</td>
+                            <td>Normal</td>
+                            <td><span class="team-member">AJ</span> <span class="team-member">EW</span> <span class="team-member">RP</span></td>
+                            <td>3 months ago</td>
+                        </tr>
+                        <tr>
+                            <td>Test task</td>
+                            <td>High</td>
+                            <td><span class="team-member">CA</span> <span class="team-member">IS</span> <span class="team-member">AJ</span> <span class="team-member">RP</span></td>
+                            <td>4 months ago</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Change Password Form Section -->
+            <section class="change-password-form" *ngIf="showChangePasswordForm">
+                <div class="overlay"></div>
+                <div class="form-container">
+                    <h3>Change Password</h3>
+                    <!-- Add your change password form elements here -->
+                    <form >
+                        <label for="currentPassword">Current Password</label>
+                        <input type="password" id="currentPassword" name="currentPassword" required>
+
+                        <label for="newPassword">New Password</label>
+                        <input type="password" id="newPassword" name="newPassword" required>
+
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+                        <button type="submit">Change Password</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
