@@ -12,26 +12,23 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
     TasksComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    FormsModule ,
-    HttpClientModule  
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
