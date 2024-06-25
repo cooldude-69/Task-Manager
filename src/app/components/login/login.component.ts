@@ -33,6 +33,9 @@ export class LoginComponent implements OnInit {
       return;
     }
 
+    // Log form values
+    console.log('Form values:', this.loginForm.value);
+
     // // check if email and password match
     // if (
     //   this.loginForm.value.email === 'mailto:sanjana03@gmail.com' &&
